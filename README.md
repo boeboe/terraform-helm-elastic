@@ -75,9 +75,9 @@ module "elastic" {
   }
 }
 
-output "prometheus_helm_metadata" {
-  description = "block status of the prometheus prometheus helm release"
-  value = module.prometheus.prometheus_helm_metadata[0]
+output "elasticsearch_helm_metadata" {
+  description = "block status of the elasticsearch helm release"
+  value       = module.elastic.elasticsearch_helm_metadata[0]
 }
 ```
 
@@ -87,18 +87,34 @@ Check the [examples](examples) for more details.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|----------|
-| prometheus_helm_version | prometheus helm chart version | string | - | true |
-| prometheus_helm_namespace | prometheus helm namespace | string | "prometheus" | false |
-| prometheus_helm_repo | prometheus helm repository | string | "https://prometheus-community.github.io/helm-charts" | false |
-| prometheus_settings | prometheus settings | map | {} | false |
+| elastic_helm_version | elastic helm chart version | string | - | true |
+| elastic_helm_namespace | elastic helm namespace | string | "prometheus" | false |
+| elastic_helm_repo | elastic helm repository | string | "https://helm.elastic.co" | false |
+| elasticsearch_settings | elasticsearch settings | map | {} | false |
+| elasticsearch_enabled | enable helm install of elasticsearch | bool | true | false |
+| kibana_settings | kibana settings | map | {} | false |
+| kibana_enabled | enable helm install of kibana | bool | false | false |
+| apm_server_settings | apm-server settings | map | {} | false |
+| apm_server_enabled | enable helm install of apm-server | bool | false | false |
+| filebeat_settings | filebeat settings | map | {} | false |
+| filebeat_enabled | enable helm install of filebeat | bool | false | false |
+| metricbeat_settings | metricbeat settings | map | {} | false |
+| metricbeat_enabled | enable helm install of metricbeat | bool | false | false |
+| logstash_settings | logstash settings | map | {} | false |
+| logstash_enabled | enable helm install of logstash | bool | false | false |
 
-> **INFO:** in order to overwrite specific versions of the `server`, `alertmanager`, `nodeExporter` or `pushgateway` containers used, override the correct `tag` parameters in the helm chart [default values](https://artifacthub.io/packages/helm/prometheus-community/prometheus?modal=values)
+
 
 ## Outputs
 
 | Name | Description | Type |
 |------|-------------|------|
-| prometheus_helm_metadata | block status of the prometheus helm release | list |
+| elasticsearch_helm_metadata | block status of the elasticsearch helm release | list |
+| kibana_helm_metadata | block status of the kibana helm release | list |
+| apm_server_helm_metadata | block status of the apm-server helm release | list |
+| filebeat_helm_metadata | block status of the filebeat helm release | list |
+| metricbeat_helm_metadata | block status of the metricbeat helm release | list |
+| logstash_helm_metadata | block status of the logstash helm release | list |
 
 
 Example output:

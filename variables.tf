@@ -1,9 +1,3 @@
-variable "elastic_helm_repo" {
-  description = "elastic helm repository"
-  type        = string
-  default     = "https://helm.elastic.co"
-}
-
 variable "elastic_helm_version" {
   description = "elastic helm chart version"
   type        = string
@@ -13,6 +7,12 @@ variable "elastic_helm_namespace" {
   description = "elastic helm namespace"
   type        = string
   default     = "elastic"
+}
+
+variable "elastic_helm_repo" {
+  description = "elastic helm repository"
+  type        = string
+  default     = "https://helm.elastic.co"
 }
 
 
