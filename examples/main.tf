@@ -20,8 +20,6 @@ locals {
     "filebeatConfig.filebeat\\.yml" = <<FILEBEAT_CONFIG
       output.elasticsearch:
         hosts: ["http://elasticsearch:9200"]
-        username: "elastic"
-        password: "elastic123"
       filebeat.inputs:
         - type: container
           paths: 
